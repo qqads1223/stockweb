@@ -201,7 +201,7 @@
     </script>
 
     <script>
-         async function get() {
+         function get() {
             document.getElementById("btn").disabled=true;
             document.getElementById("btn2").disabled=true;
             var myselect = document.getElementById("select")
@@ -218,7 +218,7 @@
                 "Accept": "application/json",
             }
 
-           await fetch("https://webapi0520221003154039.azurewebsites.net/api/Values/Select2", {
+            fetch("https://webapi0520221003154039.azurewebsites.net/api/Values/Select2", {
 
                 method: "POST",
 
@@ -236,7 +236,7 @@
                 "Accept": "application/json",
             }
 
-           await fetch("https://webapi0520221003154039.azurewebsites.net/api/Values/Select3", {
+         fetch("https://webapi0520221003154039.azurewebsites.net/api/Values/Select3", {
 
                 method: "POST",
                 headers: headers2,
@@ -253,7 +253,7 @@
                 "Accept": "application/json",
             }
 
-          await fetch("https://webapi0520221003154039.azurewebsites.net/api/Values/Select4", {
+          fetch("https://webapi0520221003154039.azurewebsites.net/api/Values/Select4", {
 
                 method: "POST",
 
@@ -271,7 +271,7 @@
                 "Accept": "application/json",
             }
 
-          await fetch("https://webapi0520221003154039.azurewebsites.net/api/Values/Select5", {
+           fetch("https://webapi0520221003154039.azurewebsites.net/api/Values/Select5", {
 
                 method: "POST",
 
@@ -397,7 +397,7 @@
 
 
 
-             async   function   take() {
+              function   take() {
                     document.getElementById("btn").disabled=true;
                    document.getElementById("btn2").disabled=true;
                     var myselect = document.getElementById("select")
@@ -415,7 +415,7 @@
                         "Accept": "application/json",
                     }
 
-                 await   fetch("https://webapi0520221003154039.azurewebsites.net/api/Values/Insert", {
+                 fetch("https://webapi0520221003154039.azurewebsites.net/api/Values/Insert", {
                         method: "POST",
 
                         headers: headers4,
@@ -433,7 +433,7 @@
                         "Accept": "application/json",
                     }
 
-                  await  fetch("https://webapi0520221003154039.azurewebsites.net/api/Values/Insert2", {
+                   fetch("https://webapi0520221003154039.azurewebsites.net/api/Values/Insert2", {
                         method: "POST",
 
                         headers: headers5,
@@ -452,7 +452,7 @@
                         "Accept": "application/json",
                     }
 
-                   await fetch("https://webapi0520221003154039.azurewebsites.net/api/Values/Insert3", {
+                fetch("https://webapi0520221003154039.azurewebsites.net/api/Values/Insert3", {
                         method: "POST",
 
                         headers: headers6,
@@ -471,7 +471,7 @@
                         "Accept": "application/json",
                     }
 
-                 await   fetch("https://webapi0520221003154039.azurewebsites.net/api/Values/Insert4", {
+                  fetch("https://webapi0520221003154039.azurewebsites.net/api/Values/Insert4", {
                         method: "POST",
 
                         headers: headers7,

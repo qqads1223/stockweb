@@ -26,7 +26,7 @@
             <input id="btn2" type="button" value="新增資料" onclick="take()">
     </div>
     <hr>
-    </form>
+    
     <div id="a_0">
         <table border="1" id="tab1" class="container bodylist">
             <tr class="col01" valign="middle">
@@ -201,7 +201,9 @@
     </script>
 
     <script>
-        function get() {
+         async function get() {
+            document.getElementById("btn").disabled=true;
+            document.getElementById("btn2").disabled=true;
             var myselect = document.getElementById("select")
             var index = myselect.selectedIndex;
             var text = myselect.options[index].text
@@ -216,7 +218,7 @@
                 "Accept": "application/json",
             }
 
-            fetch("https://webapi0520221003154039.azurewebsites.net/api/Values/Select2", {
+           await fetch("https://webapi0520221003154039.azurewebsites.net/api/Values/Select2", {
 
                 method: "POST",
 
@@ -234,7 +236,7 @@
                 "Accept": "application/json",
             }
 
-            fetch("https://webapi0520221003154039.azurewebsites.net/api/Values/Select3", {
+           await fetch("https://webapi0520221003154039.azurewebsites.net/api/Values/Select3", {
 
                 method: "POST",
                 headers: headers2,
@@ -251,7 +253,7 @@
                 "Accept": "application/json",
             }
 
-            fetch("https://webapi0520221003154039.azurewebsites.net/api/Values/Select4", {
+          await fetch("https://webapi0520221003154039.azurewebsites.net/api/Values/Select4", {
 
                 method: "POST",
 
@@ -269,7 +271,7 @@
                 "Accept": "application/json",
             }
 
-            fetch("https://webapi0520221003154039.azurewebsites.net/api/Values/Select5", {
+          await fetch("https://webapi0520221003154039.azurewebsites.net/api/Values/Select5", {
 
                 method: "POST",
 
@@ -285,10 +287,10 @@
 
     </script>
     <script>
-        function add(data01) {
+           function add(data01) {
             let table = document.getElementById("tab1")
             var counter = table.rows.length;
-
+            
             for (let i = counter - 1; i > 0; i--) {
                 table.deleteRow(i)
             }
@@ -307,6 +309,10 @@
                 table.appendChild(tr)
 
             }
+      
+            document.getElementById("btn").disabled=false;
+            document.getElementById("btn2").disabled=false;
+            
         }
 
         function add2(data01) {
@@ -327,11 +333,15 @@
 
                 }
                 table2.appendChild(tr)
-
+        
             }
+            document.getElementById("btn").disabled=false;
+            document.getElementById("btn2").disabled=false;
         }
             function add3(data) {
                 console.log(data);
+                document.getElementById("btn").disabled=false;
+            document.getElementById("btn2").disabled=false;  
                 $("#b0").text(data["symbolId"]);
                 $("#b1").text(data.data[0]["comname"]);
                 $("#b2").text(data.data[0]["engadd"]);
@@ -355,12 +365,14 @@
                 $("#b20").text(data.data[0]["va"]);
                 $("#b21").text(data.data[0]["comadd"]);
                 $("#b22").text(data.data[0]["market"]); 
-                $("#b23").text(data.data[0]["grp"]);                    
+                $("#b23").text(data.data[0]["grp"]);     
+                     
             }
             function add4(data) {
                 console.log(data);
-                $("#c0").text(data["symbolId"]);
-              
+            document.getElementById("btn").disabled=false;
+            document.getElementById("btn2").disabled=false;  
+                $("#c0").text(data["symbolId"]);   
                 $("#c1").text(data.data[0]["fname"]);
                 $("#c2").text(data.data[0]["dc"]);
                 $("#c3").text(data.data[0]["ia"]);
@@ -376,6 +388,7 @@
                 $("#c13").text(data.data[0]["comphone"]);
                 $("#c14").text(data.data[0]["comadd"]);
                 $("#c15").text(data.data[0]["website"]);  
+       
             }
         
     </script>
@@ -384,7 +397,9 @@
 
 
 
-                function take() {
+             async   function   take() {
+                    document.getElementById("btn").disabled=true;
+                   document.getElementById("btn2").disabled=true;
                     var myselect = document.getElementById("select")
                     var index = myselect.selectedIndex;
                     var text = myselect.options[index].text
@@ -400,7 +415,7 @@
                         "Accept": "application/json",
                     }
 
-                    fetch("https://webapi0520221003154039.azurewebsites.net/api/Values/Insert", {
+                 await   fetch("https://webapi0520221003154039.azurewebsites.net/api/Values/Insert", {
                         method: "POST",
 
                         headers: headers4,
@@ -409,15 +424,16 @@
                         .then((response) => response.json())
                         .then((json) => (json));
 
-
+                       document.getElementById("btn").disabled=false;
+                      document.getElementById("btn2").disabled=false;
                 }  
-                else if(myselect.options[2].selected==true){
+              else if(myselect.options[2].selected==true){
                     let headers5 = {
                         "Content-Type": "application/json",
                         "Accept": "application/json",
                     }
 
-                    fetch("https://webapi0520221003154039.azurewebsites.net/api/Values/Insert2", {
+                  await  fetch("https://webapi0520221003154039.azurewebsites.net/api/Values/Insert2", {
                         method: "POST",
 
                         headers: headers5,
@@ -426,7 +442,8 @@
                         .then((response) => response.json())
                         .then((json) => (json));
 
-
+                     document.getElementById("btn").disabled=false;
+                    document.getElementById("btn2").disabled=false;
 
                 }
                 else if(myselect.options[3].selected==true){
@@ -435,7 +452,7 @@
                         "Accept": "application/json",
                     }
 
-                    fetch("https://webapi0520221003154039.azurewebsites.net/api/Values/Insert3", {
+                   await fetch("https://webapi0520221003154039.azurewebsites.net/api/Values/Insert3", {
                         method: "POST",
 
                         headers: headers6,
@@ -444,6 +461,9 @@
                         .then((response) => response.json())
                         .then((json) => (json));
 
+                        document.getElementById("btn").disabled=false;
+                       document.getElementById("btn2").disabled=false;
+
                 }
                 else if(myselect.options[4].selected==true){
                     let headers7 = {
@@ -451,7 +471,7 @@
                         "Accept": "application/json",
                     }
 
-                    fetch("https://webapi0520221003154039.azurewebsites.net/api/Values/Insert4", {
+                 await   fetch("https://webapi0520221003154039.azurewebsites.net/api/Values/Insert4", {
                         method: "POST",
 
                         headers: headers7,
@@ -460,6 +480,8 @@
                         .then((response) => response.json())
                         .then((json) => (json));
 
+                        document.getElementById("btn").disabled=false;
+                       document.getElementById("btn2").disabled=false;
                 }
 
             }

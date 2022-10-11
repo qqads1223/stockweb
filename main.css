@@ -1,0 +1,27 @@
+*{
+    margin: 10;
+    padding:10;
+}
+html,body{
+    height: 100%;
+    max-width: 100%;
+    font-family:Microsoft JhengHei ;
+    background-color: beige;
+}
+.bodylist{ 
+    border-top: none;
+    position: relative;
+    padding: 10px;
+    border: 1px solid black;
+    color: black;
+    text-align: center;
+    margin: auto;
+    word-break: break-all;
+
+}
+.col01
+{
+ background-color:orange;
+ color:brown;
+ 
+}

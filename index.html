@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+    <title>Document</title>
+    <link rel="stylesheet" href="main.css" />
+</head>
+
+<body>
+    <div class="container bodylist">
+        <form>
+
+            請輸入股票代碼： <select name="select_one" id="select">
+                <option >請選擇</option>
+                <option value="#a_0">營收表</option>
+                <option value="#a_1">每股盈餘</option>
+                <option value="#a_2">基本資料表</option>
+                <option value="#a_3">ETF基本資料</option>
+            </select>
+            <input type="text" value="" name="symid" id="symid">
+            <input id="btn" type="button" value="點我查詢" onclick="get()">
+            <input id="btn2" type="button" value="新增資料" onclick="take()">
+    </div>
+    <hr>
+    </form>
+    <div id="a_0">
+        <table border="1" id="tab1" class="container bodylist">
+            <tr class="col01" valign="middle">
+                <td class="col01">編號</td>
+                <td>年月</td>
+                <td>當月營收</td>
+                <td>月增率%</td>
+                <td>去年同月營收</td>
+                <td>年增率%</td>
+                <td>當月累計營收</td>
+                <td>去年累計營收</td>
+                <td>年增率%</td>
+            </tr>
+        </table>
+    </div>
+    <div id="a_1">
+        <table border="1" id="tab2" class="container bodylist">
+            <tr class="col01" valign="middle">
+                <td class="col01">編號</td>
+                <td>年度/季別</td>
+                <td>每股盈餘</td>
+                <td>季增率% </td>
+                <td>年增率% </td>
+                <td>季均價</td>
+            </tr>
+        </table>
+    </div>
+
+    <div id="a_2">
+        <table border="1" id="tab3" class="container bodylist">
+            <tr>
+                <td class="col01">公司名稱</td>
+                <td id="b1"></td>
+                <td class="col01">發言人</td>
+                <td id="b2"></td>
+            </tr>
+            <tr>
+                <td class="col01">英文簡稱</td>
+                <td id="b3"></td>
+                <td class="col01">代理發言人</td>
+                <td id="b4"></td>
+            </tr>
+            <tr>
+                <td class="col01">成立時間</td>
+                <td id="b5"></td>
+                <td class="col01">總機電話</td>
+                <td id="b6"></td>
+            </tr>
+            <tr>
+                <td class="col01">掛牌日期</td>
+                <td id="b7"></td>
+                <td class="col01">傳真號碼</td>
+                <td id="b8"></td>
+            </tr>
+            <tr>
+                <td class="col01">產業類別</td>
+                <td id="b9"></td>
+                <td class="col01">公司網站</td>
+                <td id="b10"></td>
+            </tr>
+            <tr>
+                <td class="col01">董事長</td>
+                <td id="b11"></td>
+                <td class="col01">電子郵件</td>
+                <td id="b12"></td>
+            </tr>
+            <tr>
+                <td class="col01">總經理</td>
+                <td id="b13"></td>
+                <td class="col01">股務代理</td>
+                <td id="b14"></td>
+            </tr>
+            <tr>
+                <td class="col01">股本</td>
+                <td id="b15"></td>
+                <td class="col01">簽證會計師</td>
+                <td id="b16"></td>
+            </tr>
+            <tr>
+                <td class="col01">已發行普通股數</td>
+                <td id="b17"></td>
+                <td class="col01">公司地址</td>
+                <td id="b18"></td>
+            </tr>
+            <tr>
+                <td class="col01">市值 (百萬)</td>
+                <td id="b19"></td>
+                <td class="col01">所屬集團</td>
+                <td id="b20"></td>
+            </tr>
+            <tr>
+                <td class="col01">董監持股比例(%)</td>
+                <td id="b21"></td>
+                <td class="col01">市場別</td>
+                <td id="b22"></td>
+            </tr>
+            <tr>
+                <td class="col01" >主要經營業務</td>
+                <td id="b23"></td>
+                <td class="col01"></td>
+                <td id="b23"></td>
+               
+            </tr>
+
+        </table>
+    </div>
+    <div id="a_3">
+        <table border="1" id="tab4" class="container bodylist">
+            <tr>
+                <td class="col01">全名</td>
+                <td id="c1"></td>
+                <td class="col01">保管費率</td>
+                <td id="c2"></td>
+            </tr>
+            <tr>
+                <td class="col01">計價幣別</td>
+                <td id="c3"></td>
+                <td class="col01">發行公司</td>
+                <td id="c4"></td>
+            </tr>
+            <tr>
+                <td class="col01">投資地區</td>
+                <td id="c5"></td>
+                <td class="col01">成立日</td>
+                <td id="c6"></td>
+            </tr>
+            <tr>
+                <td class="col01">交易所</td>
+                <td id="c7"></td>
+                <td class="col01">經理人</td>
+                <td id="c8"></td>
+            </tr>
+            <tr>
+                <td class="col01">追蹤指數</td>
+                <td id="c9"></td>
+                <td class="col01">公司電話</td>
+                <td id="c10"></td>
+            </tr>
+            <tr>
+                <td class="col01">資產規模（百萬）</td>
+                <td id="c11"></td>
+                <td class="col01">公司地址</td>
+                <td id="c12"></td>
+            </tr>
+            <tr>
+                <td class="col01">最高管理費率</td>
+                <td id="c13"></td>
+                <td class="col01">網站</td>
+                <td id="c14"></td>
+            </tr>
+            <tr>
+                <td class="col01">管理費率</td>
+                <td id="c15"></td>
+              
+            </tr>
+
+    <script>
+        $(function () {
+            //全部選擇隱藏
+            $('div[id^="a_"]').hide();
+            $('#select').change(function () {
+                var selectValue = $(this).val();
+                console.log(selectValue);
+
+                $('div[id^="a_"]').hide();
+                //指定選擇顯示
+                $(selectValue).show();
+
+            });
+
+        })
+    </script>
+
+    <script>
+        function get() {
+            var myselect = document.getElementById("select")
+            var index = myselect.selectedIndex;
+            var text = myselect.options[index].text
+
+            var IDD = document.getElementById("symid").value;
+            console.log(IDD);
+
+
+            if(myselect.options[1].selected==true){
+            let headers = {
+                "Content-Type": "application/json",
+                "Accept": "application/json",
+            }
+
+            fetch("https://webapi0520221003154039.azurewebsites.net/api/Values/Select2", {
+
+                method: "POST",
+
+                headers: headers,
+                body: `{"symbolId":"${IDD}"}`
+            })
+                .then((response) => response.json())
+                .then((json) => add(json));
+
+
+           }
+           else if(myselect.options[2].selected==true){
+            let headers2 = {
+                "Content-Type": "application/json",
+                "Accept": "application/json",
+            }
+
+            fetch("https://webapi0520221003154039.azurewebsites.net/api/Values/Select3", {
+
+                method: "POST",
+                headers: headers2,
+                body: `{"symbolId":"${IDD}"}`
+            })
+                .then((response) => response.json())
+                .then((json) => add2(json));
+
+        }
+
+        else if(myselect.options[3].selected==true){
+            let headers3 = {
+                "Content-Type": "application/json",
+                "Accept": "application/json",
+            }
+
+            fetch("https://webapi0520221003154039.azurewebsites.net/api/Values/Select4", {
+
+                method: "POST",
+
+                headers: headers3,
+                body: `{"symbolId":"${IDD}"}`
+            })
+                .then((response) => response.json())
+                .then((json) => add3(json));
+            
+
+         }
+         else if(myselect.options[4].selected==true){
+            let headers3 = {
+                "Content-Type": "application/json",
+                "Accept": "application/json",
+            }
+
+            fetch("https://webapi0520221003154039.azurewebsites.net/api/Values/Select5", {
+
+                method: "POST",
+
+                headers: headers3,
+                body: `{"symbolId":"${IDD}"}`
+            })
+                .then((response) => response.json())
+                .then((json) => add4(json));
+            
+
+         }
+        }
+
+    </script>
+    <script>
+        function add(data01) {
+            let table = document.getElementById("tab1")
+            var counter = table.rows.length;
+
+            for (let i = counter - 1; i > 0; i--) {
+                table.deleteRow(i)
+            }
+
+
+            for (let i = 0; i <= data01.data.length; i++) {
+                let tr = document.createElement("tr")
+                for (let j in data01.data[i]) {
+                   
+                    var td = document.createElement("td")
+                    td.innerHTML = data01.data[i][j]
+                    tr.appendChild(td)
+
+                }
+
+                table.appendChild(tr)
+
+            }
+        }
+
+        function add2(data01) {
+            let table2 = document.getElementById("tab2");
+            var counter = table2.rows.length;
+
+            for (let i = counter - 1; i > 0; i--) {
+                table2.deleteRow(i)
+            }
+            
+
+            for (let i = 0; i <= data01.data.length; i++) {
+                let tr = document.createElement("tr")
+                for (let j in data01.data[i]) {
+                    var td = document.createElement("td")
+                    td.innerHTML = data01.data[i][j]
+                    tr.appendChild(td)
+
+                }
+                table2.appendChild(tr)
+
+            }
+        }
+            function add3(data) {
+                console.log(data);
+                $("#b0").text(data["symbolId"]);
+                $("#b1").text(data.data[0]["comname"]);
+                $("#b2").text(data.data[0]["engadd"]);
+                $("#b3").text(data.data[0]["estab"]);
+                $("#b4").text(data.data[0]["ld"]);
+                $("#b5").text(data.data[0]["lc"]);
+                $("#b6").text(data.data[0]["chairman"]);
+                $("#b7").text(data.data[0]["gm"]);
+                $("#b8").text(data.data[0]["sc"]);
+                $("#b9").text(data.data[0]["nooso"]);
+                $("#b10").text(data.data[0]["mcM"]);
+                $("#b11").text(data.data[0]["srodas"]);
+                $("#b12").text(data.data[0]["mb"]);
+                $("#b13").text(data.data[0]["spokesman"]);
+                $("#b14").text(data.data[0]["actsp"]);
+                $("#b15").text(data.data[0]["tephsw"]);
+                $("#b16").text(data.data[0]["fxn"]);
+                $("#b17").text(data.data[0]["cwebsite"]);
+                $("#b18").text(data.data[0]["email"]);
+                $("#b19").text(data.data[0]["sa"]);
+                $("#b20").text(data.data[0]["va"]);
+                $("#b21").text(data.data[0]["comadd"]);
+                $("#b22").text(data.data[0]["market"]); 
+                $("#b23").text(data.data[0]["grp"]);                    
+            }
+            function add4(data) {
+                console.log(data);
+                $("#c0").text(data["symbolId"]);
+              
+                $("#c1").text(data.data[0]["fname"]);
+                $("#c2").text(data.data[0]["dc"]);
+                $("#c3").text(data.data[0]["ia"]);
+                $("#c4").text(data.data[0]["exg"]);
+                $("#c5").text(data.data[0]["ti"]);
+                $("#c6").text(data.data[0]["asm"]);
+                $("#c7").text(data.data[0]["tmr"]);
+                $("#c8").text(data.data[0]["mr"]);
+                $("#c9").text(data.data[0]["cr"]);
+                $("#c10").text(data.data[0]["publisher"]);
+                $("#c11").text(data.data[0]["fd"]);
+                $("#c12").text(data.data[0]["manager"]);
+                $("#c13").text(data.data[0]["comphone"]);
+                $("#c14").text(data.data[0]["comadd"]);
+                $("#c15").text(data.data[0]["website"]);  
+            }
+        
+    </script>
+    <script>
+            try {
+
+
+
+                function take() {
+                    var myselect = document.getElementById("select")
+                    var index = myselect.selectedIndex;
+                    var text = myselect.options[index].text
+
+                    var IDD = document.getElementById("symid").value;
+                    console.log(IDD);
+
+
+
+                if(myselect.options[1].selected==true){
+                    let headers4 = {
+                        "Content-Type": "application/json",
+                        "Accept": "application/json",
+                    }
+
+                    fetch("https://webapi0520221003154039.azurewebsites.net/api/Values/Insert", {
+                        method: "POST",
+
+                        headers: headers4,
+                        body: `{"symbolId":"${IDD}"}`
+                    })
+                        .then((response) => response.json())
+                        .then((json) => (json));
+
+
+                }  
+                else if(myselect.options[2].selected==true){
+                    let headers5 = {
+                        "Content-Type": "application/json",
+                        "Accept": "application/json",
+                    }
+
+                    fetch("https://webapi0520221003154039.azurewebsites.net/api/Values/Insert2", {
+                        method: "POST",
+
+                        headers: headers5,
+                        body: `{"symbolId":"${IDD}"}`
+                    })
+                        .then((response) => response.json())
+                        .then((json) => (json));
+
+
+
+                }
+                else if(myselect.options[3].selected==true){
+                    let headers6 = {
+                        "Content-Type": "application/json",
+                        "Accept": "application/json",
+                    }
+
+                    fetch("https://webapi0520221003154039.azurewebsites.net/api/Values/Insert3", {
+                        method: "POST",
+
+                        headers: headers6,
+                        body: `{"symbolId":"${IDD}"}`
+                    })
+                        .then((response) => response.json())
+                        .then((json) => (json));
+
+                }
+                else if(myselect.options[4].selected==true){
+                    let headers7 = {
+                        "Content-Type": "application/json",
+                        "Accept": "application/json",
+                    }
+
+                    fetch("https://webapi0520221003154039.azurewebsites.net/api/Values/Insert4", {
+                        method: "POST",
+
+                        headers: headers7,
+                        body: `{"symbolId":"${IDD}"}`
+                    })
+                        .then((response) => response.json())
+                        .then((json) => (json));
+
+                }
+
+            }
+            }
+
+            catch (e) {
+
+            }
+
+    </script>
+
+
+
+
+</body>
+
+</html>
